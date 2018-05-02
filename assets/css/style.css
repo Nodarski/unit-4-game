@@ -1,3 +1,29 @@
+.group:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+body {
+    background-image: url("https://static.giantbomb.com/uploads/original/9/99864/2389810-star_wars_logo.svg.png");
+    background-size: 100%;
+    background-color: #cccccc;
+}
 img {
     float: left;
+    visibility: hidden;
+}
+.header {
+    width: 50%;
+    margin: auto;
+    color: #cccccc;
+
+}
+.gameBody {
+    width: 100%;
+}
+.gameTitle {
+    text-align: center;
+    font-size: 70px;
+  margin: 20px 0;
+  padding: 10px;
 }
