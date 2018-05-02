@@ -2,6 +2,8 @@
 //player selects character, 4 options
 var mainChar;
 var currEnemy;
+var divOfEnemy;
+var divOfChar;
 var luke = {
     health:100,
     attkPower:8,
@@ -29,6 +31,7 @@ var maul = {
         $(".theSenate").appendTo(".chooseEnemy");
         $(".dMaul").appendTo(".chooseEnemy");
         mainChar = luke;
+        divOfChar = '.luke';
         console.log(mainChar);
     });
 
@@ -38,6 +41,7 @@ var maul = {
         $(".theSenate").appendTo(".chooseEnemy");
         $(".dMaul").appendTo(".chooseEnemy");
         mainChar = obiWan;
+        divOfChar = '.obiWan';
         console.log(mainChar);
     });
 
@@ -47,6 +51,7 @@ var maul = {
         $(".luke").appendTo(".chooseEnemy");
         $(".dMaul").appendTo(".chooseEnemy");
         mainChar = theSenate;
+        divOfChar = '.theSenate';
         console.log(mainChar);
     });
 
@@ -56,6 +61,7 @@ var maul = {
         $(".theSenate").appendTo(".chooseEnemy");
         $(".luke").appendTo(".chooseEnemy");
         mainChar = maul;
+        divOfChar = 'dMaul';
         console.log(mainChar);
     });
 
@@ -67,6 +73,8 @@ var maul = {
         $(".luke").appendTo(".enemyChosen");
         $(".defender").text("Defender!!");
         currEnemy = luke;
+        divOfEnemy = '.luke';
+        console.log(currEnemy);
         }
     });
     $(".chooseEnemy").on("click",".obiWan", function(){
@@ -74,6 +82,8 @@ var maul = {
         $(".obiWan").appendTo(".enemyChosen");
         $(".defender").text("Defender!!");
         currEnemy = obiWan;
+        divOfEnemy = '.obiWan';
+        console.log(currEnemy);
         }
     });
     $(".chooseEnemy").on("click",".theSenate", function(){
@@ -81,6 +91,8 @@ var maul = {
         $(".theSenate").appendTo(".enemyChosen");
         $(".defender").text("Defender!!");
         currEnemy = theSenate;
+        divOfEnemy = '.theSenate';
+        console.log(currEnemy);
         }
     });
     $(".chooseEnemy").on("click",".dMaul", function(){
@@ -88,8 +100,43 @@ var maul = {
         $(".dMaul").appendTo(".enemyChosen");
         $(".defender").text("Defender!!");
         currEnemy = maul;
+        divOfEnemy = '.dMaul'
+        console.log(currEnemy);
         }
     });
+
+    $(".attack").on("click", function(){
+        if (!$.trim( $('.chooseEnemy').html() ).length && !$.trim( $('.enemyChosen').html() ).length) {
+            alert("Pick you character, then choose who to fight! Try to beat all three!");
+            alert("ididthislastminute, oops!");
+        }
+        if (!$.trim( $('.enemyChosen').html() ).length && $.trim( $('.chooseEnemy').html() ).length ) {
+            alert('chose an enemy please');
+        }
+        if ( $.trim( $('.charSelect').html() ).length &&
+                 $.trim( $('.enemyChosen').html() ).length && 
+                     ($.trim( $('.chooseEnemy').html() ).length || !$.trim( $('.chooseEnemy').html() ).length) ) {
+            
+            currEnemy.health-=mainChar.attkPower;
+                if (currEnemy.health <= 0){
+                    $("div").remove(divOfEnemy);
+                }
+            mainChar.health-=currEnemy.counterPower;
+                if(mainChar.health <= 0){
+                    $("div").remove(divOfChar);
+                    alert('you lost, please restart the page.ty');
+                }
+            mainChar.attkPower+=8;
+
+            $(".textHERE").text("health: "+currEnemy.health+"  Attack"+currEnemy.counterPower);
+            console.log(mainChar.attkPower);
+          
+          
+        }
+
+       
+
+    })
 
 
 
