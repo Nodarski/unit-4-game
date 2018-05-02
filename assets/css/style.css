@@ -1,16 +1,18 @@
 .group:after {
     content: "";
-    display: table;
     clear: both;
+    display: table;
 }
 body {
-    background-image: url("https://static.giantbomb.com/uploads/original/9/99864/2389810-star_wars_logo.svg.png");
     background-size: 100%;
-    background-color: #cccccc;
+    background-color: black;
 }
 img {
+    
+    display: block;
     float: left;
-    visibility: hidden;
+    
+    
 }
 .header {
     width: 50%;
@@ -26,4 +28,16 @@ img {
     font-size: 70px;
   margin: 20px 0;
   padding: 10px;
+}
+.section{
+    width: 100%;
+    font-size: 40px;
+    color: #cccccc;
+    clear: both;
+}
+.images {
+    width: 100%;
+    height: 100px;
+    margin: auto;
+    text-align: center;
 }
